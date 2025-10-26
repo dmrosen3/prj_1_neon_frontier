@@ -27,20 +27,30 @@ class Character:
         target.health_bar.update()
         type_out(f"{self.name} dealt {self.weapon.damage} damage to {target.name} with a(n) {self.weapon.name}")
 
+
 class Hero(Character):
     def __init__(self, 
                  name: str, 
                  health: int, 
-                 speed: int,
-                 ) -> None:
+                 speed: int):
         super().__init__(name=name, health=health, speed=speed)
+
         self.inventory = Inventory()
+        
+        self.inventory.add_item(fists)
+
 
         self.inventory.add_item(nova_sword)
-        self.inventory.add_item(fists)
-        self.weapon = self.inventory.weapons[0]
+        self.inventory.add_item(blaster) ##for now. will make a system to acquire weapons from defeated enemies, as well as a shop to buy weapons
+        self.inventory.add_item(plasma_grenade)
+        self.inventory.add_item(plasma_grenade)
+        self.inventory.add_item(stim_pack)
+        self.inventory.add_item(stim_pack)
+
+        self.weapon = self.inventory.weapons[0] if self.inventory.weapons else fists
+
         self.health_bar = HealthBar(self, color="green")
-        self.inventory = Inventory()
+        
         
 
 class Enemy(Character):

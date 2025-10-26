@@ -1,5 +1,4 @@
 from type_out import type_out
-from character import Hero
 from health_bar import HealthBar
 
 class Weapon:
@@ -7,7 +6,8 @@ class Weapon:
                  name: str, 
                  weapon_type: str, 
                  damage: int, 
-                 value: int
+                 value: int,
+                 quantity: int = 1
                  ) -> None:
         self.name = name
         self.weapon_type = weapon_type
@@ -25,7 +25,7 @@ blaster = Weapon(name = "Blaster",
                     damage = 4,
                     value = 8)
 
-fists = Weapon(name = "fists",
+fists = Weapon(name = "Fists",
                     weapon_type = "blunt",
                     damage = 2,
                     value = 0)
@@ -49,9 +49,9 @@ class Consumable:
 
         elif self.consumable_type == "Healing":
             user.health = min(user.health_max, user.health + self.damage)
-            type_out(f"({user.name} used a {self.name} and restored {self.damage} health!)\n{user.name} now has {user.health}/{user.health_max} health.")
-            #hero.health_bar.update()  redraw hero's health bar when a healing item is used
-           # hero.health_bar.draw()
+            type_out(f"{user.name} used a {self.name} and restored {self.damage} health!\n{user.name} now has {user.health}/{user.health_max} health.")
+            user.health_bar.update()  
+            user.health_bar.draw()
 
         elif self.consumable_type == "Damaging":
             if target is None:

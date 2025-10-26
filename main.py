@@ -40,11 +40,7 @@ while True:
         if choice == "1":
 
            
-            hero.inventory.add_item(nova_sword) ##for now. will make an inventory that will stay with the player, and here that inventory will get added. will add with the shop mechanic
-            hero.inventory.add_item(plasma_grenade)
-            hero.inventory.add_item(plasma_grenade)
-            hero.inventory.add_item(stim_pack)
-            hero.inventory.add_item(stim_pack)
+            
 
             enemy = Drone()
 
